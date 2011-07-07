@@ -1,5 +1,55 @@
 <?xml version="1.1" encoding="utf-8"?>
 <machines>
+	<machine>
+		<name>Cupcake (ABS) w/ HBP, MK5, Gen4, and endstops</name>
+		<geometry type="cartesian">
+			<axis id="x" length="98" maxfeedrate="4000" stepspermm="47.06985" endstops="max" />
+			<!-- Pulley dia: 10.82mm / 1/8 step = 1/(10.82 * pi / 1600) -->
+			<axis id="y" length="90" maxfeedrate="4000" stepspermm="47.06985" endstops="max" />
+			<!-- Pulley dia: 10.82mm / 1/8 step = 1/(10.82 * pi / 1600) -->
+			<axis id="z" length="98.85" maxfeedrate="150" stepspermm="1280" endstops="max" />
+		</geometry>
+		<tools>
+			<tool name="Plastruder MK5" type="extruder" material="abs" motor="true" floodcoolant="false" mistcoolant="false" fan="false" automatedplatform="false" valve="false" heatedplatform="true" collet="false" heater="true"/>
+		</tools>
+		<clamps></clamps>
+		<driver name="sanguino3g">
+			<!-- optional: <portname>COM1</portname> -->
+			<rate>115200</rate>
+		</driver>
+		<warmup>
+		</warmup>
+		<cooldown>
+			(Turn off steppers after a build.)
+			M18
+		</cooldown>
+	</machine>
+	<machine>
+		<name>Cupcake (ABS) w/ HBP, MK6+ Stepstruder, Gen4, and endstops</name>
+		<geometry type="cartesian">
+			<axis id="x" length="98" maxfeedrate="4000" stepspermm="47.06985" endstops="max" />
+			<!-- Pulley dia: 10.82mm / 1/8 step = 1/(10.82 * pi / 1600) -->
+			<axis id="y" length="90" maxfeedrate="4000" stepspermm="47.06985" endstops="max" />
+			<!-- Pulley dia: 10.82mm / 1/8 step = 1/(10.82 * pi / 1600) -->
+			<axis id="z" length="99" maxfeedrate="300" stepspermm="1280" endstops="max" />
+			<axis id="a" length="100000" maxfeedrate="1600" stepspermm="50.235478806907409" endstops="none"/>
+			<!-- stepspermm is incoming filament length, 127 is ca. 4 RPM, 1600 ca. 50 RPM -->
+		</geometry>
+		<tools>
+			<tool name="Plastruder MK6+" type="extruder" material="abs" motor="true" fan="true" automatedplatform="false" heatedplatform="true" motor_steps="1600" default_rpm="1.98" heater="true" stepper_axis="a" />
+		</tools>
+		<clamps></clamps>
+		<driver name="makerbot4ga">
+			<!-- optional: <portname>COM1</portname> -->
+			<rate>115200</rate>
+		</driver>
+		<warmup>
+		</warmup>
+		<cooldown>
+			(Turn off steppers after a build.)
+			M18
+		</cooldown>
+	</machine>
 	<!-- Cupcake Basic -->
 	<machine>
 		<name>Cupcake Basic</name>
