@@ -56,6 +56,7 @@ public class BuildModel extends BuildElement {
 		if (shape == null) { 
 			loadShape();
 		}
+//		loadShape();
 		return shape;
 	}
 

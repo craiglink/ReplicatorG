@@ -1,0 +1,3 @@
+[submodule "skein_engines\\skeinforge"]
+	path = skein_engines\\skeinforge
+	url = git://github.com/craiglink/skeinforge.git

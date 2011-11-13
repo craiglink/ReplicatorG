@@ -247,8 +247,7 @@ public class ControlPanelWindow extends JFrame implements
 	protected JComponent createToolsPanel() {
 		toolsPane = new JTabbedPane();
 
-		for (Enumeration<ToolModel> e = machine.getModel().getTools().elements(); e
-				.hasMoreElements();) {
+		for (Enumeration<ToolModel> e = machine.getModel().getTools().elements(); e.hasMoreElements();) {
 			ToolModel t = e.nextElement();
 			if (t == null) continue;
 			if (t.getType().equals("extruder")) {
@@ -267,7 +266,8 @@ public class ControlPanelWindow extends JFrame implements
 			public void stateChanged(ChangeEvent ce) {
 				final JTabbedPane tp = (JTabbedPane)ce.getSource();
 				final ExtruderPanel ep = (ExtruderPanel)tp.getSelectedComponent();
-				machine.getModel().selectTool(ep.getTool().getIndex());
+//				machine.getModel().selectTool(ep.getTool().getIndex());
+				machine.runCommand(new replicatorg.drivers.commands.SelectTool(ep.getTool().getIndex()));
 			}
 		});
 		return toolsPane;

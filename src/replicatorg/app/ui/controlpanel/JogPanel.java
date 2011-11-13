@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumMap;
@@ -44,8 +45,8 @@ public class JogPanel extends JPanel implements ActionListener, MouseListener
 
 	protected Pattern jogPattern;
 
-	protected String[] jogStrings = { "Continuous Jog", "0.01mm", "0.05mm", "0.1mm", "0.5mm",
-			"1mm", "5mm", "10mm", "20mm", "50mm" };
+	protected String[] jogStrings = { "0.01mm", "0.05mm", "0.1mm", "0.5mm",
+			"1mm", "5mm", "10mm", "20mm", "50mm", "Continuous Jog" };
 
 	protected final Point5d feedrate;
 
@@ -149,7 +150,7 @@ public class JogPanel extends JPanel implements ActionListener, MouseListener
 		positionPanel.add(new JLabel("Jog Mode"),"growx");
 		// create our jog size dropdown
 		JComboBox jogList = new JComboBox(jogStrings);
-		jogList.setSelectedItem(Base.preferences.get(JOGMODE_PREF_NAME,"10mm"));
+		jogList.setSelectedItem(Base.preferences.get(JOGMODE_PREF_NAME,"1mm"));
 		jogList.setActionCommand("jog size");
 		jogList.addActionListener(this);
 		setJogMode((String)jogList.getSelectedItem());
@@ -322,10 +323,14 @@ public class JogPanel extends JPanel implements ActionListener, MouseListener
 		// add jog panel border and stuff.
 		setBorder(BorderFactory.createTitledBorder("Jog Controls"));
 	
+
+		DecimalFormatSymbols dfs = DecimalFormatSymbols.getInstance();
+		dfs.setDecimalSeparator('.');
+		positionFormatter = new DecimalFormat("###.##", dfs);
 	}
 	
 
-	DecimalFormat positionFormatter = new DecimalFormat("###.##");
+	private DecimalFormat positionFormatter;
 
 	synchronized public void updateStatus() {
 		Point5d current = machine.getDriverQueryInterface().getCurrentPosition(false);
