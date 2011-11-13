@@ -7,7 +7,7 @@
 			<!-- Pulley dia: 10.82mm / 1/8 step = 1/(10.82 * pi / 1600) -->
 			<axis id="y" length="90" maxfeedrate="4000" stepspermm="47.06985" endstops="max" />
 			<!-- Pulley dia: 10.82mm / 1/8 step = 1/(10.82 * pi / 1600) -->
-			<axis id="z" length="98.85" maxfeedrate="150" stepspermm="1280" endstops="max" />
+			<axis id="z" length="100" maxfeedrate="150" stepspermm="1280" endstops="max" />
 		</geometry>
 		<tools>
 			<tool name="Plastruder MK5" type="extruder" material="abs" motor="true" floodcoolant="false" mistcoolant="false" fan="false" automatedplatform="false" valve="false" heatedplatform="true" collet="false" heater="true"/>
@@ -31,7 +31,7 @@
 			<!-- Pulley dia: 10.82mm / 1/8 step = 1/(10.82 * pi / 1600) -->
 			<axis id="y" length="90" maxfeedrate="4000" stepspermm="47.06985" endstops="max" />
 			<!-- Pulley dia: 10.82mm / 1/8 step = 1/(10.82 * pi / 1600) -->
-			<axis id="z" length="99" maxfeedrate="300" stepspermm="1280" endstops="max" />
+			<axis id="z" length="100" maxfeedrate="200" stepspermm="1280" endstops="max" />
 			<axis id="a" length="100000" maxfeedrate="1600" stepspermm="50.235478806907409" endstops="none"/>
 			<!-- stepspermm is incoming filament length, 127 is ca. 4 RPM, 1600 ca. 50 RPM -->
 		</geometry>
