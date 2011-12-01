@@ -29,7 +29,7 @@ public class PacketBuilder implements PacketConstants {
 		idx = 2;
 		data[0] = START_BYTE;
 		// data[1] = length; // just to avoid confusion
-		add8((byte) command);
+		add8((byte)command);
 	}
 
 	/**
@@ -38,9 +38,14 @@ public class PacketBuilder implements PacketConstants {
 	 * @param v
 	 *            the value to append.
 	 */
+	void add8(byte v) {
+		data[idx++] = v;
+		crc.update(v);
+	}
+
 	void add8(int v) {
-		data[idx++] = (byte) v;
-		crc.update((byte) v);
+		assert((0xFFFFFF00 & v) == 0);
+		add8((byte) (v & 0xff));
 	}
 
 	/**
@@ -49,9 +54,14 @@ public class PacketBuilder implements PacketConstants {
 	 * @param v
 	 *            the value to append.
 	 */
-	void add16(int v) {
+	void add16(short v) {
 		add8((byte) (v & 0xff));
 		add8((byte) ((v >> 8) & 0xff));
+	}
+
+	void add16(int v) {
+		assert((0xFFFF0000 & v) == 0);
+		add16((short)(v & 0xffff));
 	}
 
 	/**
@@ -60,9 +70,14 @@ public class PacketBuilder implements PacketConstants {
 	 * @param v
 	 *            the value to append. Must be long to support unsigned ints.
 	 */
+	void add32(int v) {
+		add16((short) (v & 0xffff));
+		add16((short) ((v >> 16) & 0xffff));
+	}
+
 	void add32(long v) {
-		add16((int) (v & 0xffff));
-		add16((int) ((v >> 16) & 0xffff));
+		assert((0xFFFFFFFF00000000L & v) == 0);
+		add32((int) (v & 0xffffffff));
 	}
 
 	/**

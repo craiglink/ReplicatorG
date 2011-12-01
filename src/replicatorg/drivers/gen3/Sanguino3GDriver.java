@@ -573,9 +573,9 @@ public class Sanguino3GDriver extends SerialDriver
 		PacketBuilder pb = new PacketBuilder(MotherboardCommandCode.SET_POSITION.getCode());
 
 		Point5d steps = machine.mmToSteps(p);
-		pb.add32((long) steps.x());
-		pb.add32((long) steps.y());
-		pb.add32((long) steps.z());
+		pb.add32((int) steps.x());
+		pb.add32((int) steps.y());
+		pb.add32((int) steps.z());
 
 		Base.logger.fine("Set current position to " + p + " (" + steps + ")");
 

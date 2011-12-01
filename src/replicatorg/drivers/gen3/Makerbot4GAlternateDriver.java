@@ -140,7 +140,7 @@ public class Makerbot4GAlternateDriver extends Makerbot4GDriver {
 	/** 
 	 * Returns the hijacked axes for the current tool.
 	 */
-	private Iterable<AxisId> getHijackedAxes() {
+	protected Iterable<AxisId> getHijackedAxes() {
 		Vector<AxisId> axes = new Vector<AxisId>();
 		for ( Map.Entry<AxisId,ToolModel> entry : stepExtruderMap.entrySet()) {
 			ToolModel curTool = machine.currentTool();

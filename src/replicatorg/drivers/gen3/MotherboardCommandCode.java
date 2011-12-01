@@ -50,8 +50,13 @@ public enum MotherboardCommandCode {
 	QUEUE_POINT_NEW(142),
 	
 	STORE_HOME_POSITIONS(143),
-	RECALL_HOME_POSITIONS(144);
+	RECALL_HOME_POSITIONS(144),
 	
+	QUEUE_POINT_ABS_16(160),
+	QUEUE_POINT_NEW_16(161),
+	SET_POSITION_16(162),
+	GET_POSITION_16(163);
+
 	private int code;
 	private MotherboardCommandCode(int code) {
 		this.code = code;
